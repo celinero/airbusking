@@ -12,37 +12,37 @@
   <% end %>
 
 
-  <div class="field">
-    <%= form.label :genre_id %>
-    <%= form.select :genre_id, @genres.map {|g| [g.name, g.id]} %>
+  <div class="form-group mb-3">
+    <%= form.label :genre_id, class:"col form-label" %>
+    <%= form.select :genre_id, @genres.map {|g| [g.name, g.id]}, class: "form-select" %>
   </div>
 
-  <div class="field">
-    <%= form.label :title %>
+  <div class="form-group mb-3">
+    <%= form.label :title, class:"col form-label" %>
     <%= form.text_field :title %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
+  <div class="form-group mb-3">
+    <%= form.label :description, class:"col form-label" %>
     <%= form.text_area :description %>
   </div>
 
-  <div class="field">
-    <%= form.label :date %>
+  <div class="form-group mb-3">
+    <%= form.label :date, class:"col form-label" %>
     <%= form.date_select :date %>
   </div>
 
-  <div class="field">
-    <%= form.label :time %>
+  <div class="form-group mb-3">
+    <%= form.label :time, class:"col form-label" %>
     <%= form.time_select :time %>
   </div>
 
-  <div class="field">
-    <%= form.label :price %>
+  <div class="form-group mb-3">
+    <%= form.label :price, class:"col form-label" %>
     <%= form.number_field :price %>
   </div>
 
-  <div class="actions">
+  <div class="actions text-center">
     <%= form.submit %>
   </div>
 <% end %>
