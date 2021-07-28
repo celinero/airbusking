@@ -42,6 +42,11 @@
     <%= form.number_field :price %>
   </div>
 
+   <div class="form-group mb-3">
+    <%= form.label :picture, class:"col form-label" %>
+    <%= form.file_field :picture, class:"form-control-file", accept: 'image/jpg, image/jpeg' %>
+  </div>
+
   <div class="actions text-center">
     <%= form.submit %>
   </div>
