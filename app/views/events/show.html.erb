@@ -41,6 +41,8 @@
         <%= @event.sold %>
       </p>
 
+      <%=image_tag @event.picture, class:"main-image" if @event.picture.attached?%>
+
       <%= link_to 'Edit', edit_event_path(@event) %> |
       <%= link_to 'Back', events_path %>
     </div>
