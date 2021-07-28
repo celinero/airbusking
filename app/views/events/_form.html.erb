@@ -12,29 +12,29 @@
   <% end %>
 
 
+ <div class="form-group mb-3">
+    <%= form.label :title, class:"col form-label" %>
+    <%= form.text_field :title, class:"form-control" %>
+  </div>
+
   <div class="form-group mb-3">
     <%= form.label :genre_id, class:"col form-label" %>
     <%= form.select :genre_id, @genres.map {|g| [g.name, g.id]}, class: "form-select" %>
   </div>
 
   <div class="form-group mb-3">
-    <%= form.label :title, class:"col form-label" %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="form-group mb-3">
     <%= form.label :description, class:"col form-label" %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, class:"form-control" %>
   </div>
 
   <div class="form-group mb-3">
     <%= form.label :date, class:"col form-label" %>
-    <%= form.date_select :date %>
+    <%= form.date_field :date %>
   </div>
 
   <div class="form-group mb-3">
     <%= form.label :time, class:"col form-label" %>
-    <%= form.time_select :time %>
+    <%= form.time_field :started_at %>
   </div>
 
   <div class="form-group mb-3">
@@ -47,7 +47,7 @@
     <%= form.file_field :picture, class:"form-control-file", accept: 'image/jpg, image/jpeg' %>
   </div>
 
-  <div class="actions text-center">
+  <div class="actions text-center mt-5">
     <%= form.submit %>
   </div>
 <% end %>
