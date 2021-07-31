@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :authorise_user, only: [:edit, :update, :destroy]
   before_action :set_genres, only: [:new, :edit]
 
   # GET /events or /events.json
@@ -87,6 +88,13 @@ class EventsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_event
       @event = Event.find(params[:id])
+    end
+
+    def authorise_user
+      if current_user.id != @event.user_id
+        flash[:error] = "you're not allowed to do that"
+        redirect_to events_path
+      end
     end
 
     # Only allow a list of trusted parameters through.

@@ -11,7 +11,7 @@
     <h4 class="text-muted pb-sm-2 pb-md-3">Time: <%=@event.time%></h4>
     <p class="blockquote mt-2"><%=@event.description%></p>
     <%if current_user && @event.sold == false%>
-       <button data-stripe="payment" class="btn btn-primary p-3">Buy: $<%=@event.price%></button>
+       <button data-stripe="payment" class="btn btn-primary p-3">Buy: $<%=@event.price / 100.0%></button>
     <%elsif @event.sold == true%>
       <button class='btn btn-secondary' disabled>SOLD</button>
     <%else%>
