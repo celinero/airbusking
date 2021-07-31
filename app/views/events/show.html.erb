@@ -11,8 +11,7 @@
     <h4 class="text-muted pb-sm-2 pb-md-3">Time: <%=@event.time%></h4>
     <p class="blockquote mt-2"><%=@event.description%></p>
     <%if current_user && @event.sold == false%>
-       <button data-stripe="payment" class="btn btn-primary p-3">Buy: $<%=@event.price / 100.0%></button>
-    <%elsif @event.sold == true%>
+       <%= button_to "Buy: $#{@event.price / 100.00}", create_payment_intent_path, method: :post, remote: true, params:{id: @event.id}, class: "btn btn-primary p-3"%>
       <button class='btn btn-secondary' disabled>SOLD</button>
     <%else%>
       <%=button_to "Login to buy", new_user_session_path, class: "btn btn-info"%>
@@ -30,15 +29,4 @@
 </div>
   
 
-<script src="https://js.stripe.com/v3/"></script>
-<script>
-  document.querySelector("[data-stripe='payment']")
-      .addEventListener("click", () => {
-        const stripe = Stripe(
-          "<%=Rails.application.credentials.dig(:stripe, :public_key)%>"
-        );
-        stripe.redirectToCheckout({
-          sessionId: "<%=@session_id%>"
-        });
-      });
-</script>
+
