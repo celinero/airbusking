@@ -2,7 +2,7 @@ class PaymentsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:webhook]
   
   def success
-    @event = event.find_by_event_id(params[:id])
+    @title = params[:title]
   end
 
   def webhook 
