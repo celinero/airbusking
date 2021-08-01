@@ -6,6 +6,9 @@ class User < ApplicationRecord
   
   has_many :events
 
+  has_many :sold_orders, class_name: "Order", foreign_key: "seller_id"
+  has_many :bought_orders, class_name: "Order", foreign_key: "buyer_id"
+
   #data_sanitization
   before_save :enforce_lower_case_username
 
