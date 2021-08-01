@@ -2,7 +2,7 @@ class PaymentsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:webhook]
   
   def success
-    @title = params[:title]
+    @order = Order.find_by_event_id(params[:id])
   end
 
   def create_payment_intent
@@ -23,7 +23,7 @@ class PaymentsController < ApplicationController
             listing_id: event.id
           }
         }, 
-        success_url: "#{root_url}/success?title=#{event.title}", 
+        success_url: "#{root_url}/success?id=#{event.id}", 
         cancel_url: "#{root_url}/events"
       )
 
@@ -37,9 +37,9 @@ class PaymentsController < ApplicationController
     pp payment
     event_id = payment.metadata.event_id
     buyer_id = payment.metadata.user_id
-    event = Event.find(listing_id)
+    event = Event.find(event_id)
     event.update(sold: true)
-    
+    Order.create(event_id: event_id, buyer_id: buyer_id, seller_id: event.user_id, payment_id: payment_id, receipt_url: payment.charges.data[0].receipt_url)
   end 
 
 end

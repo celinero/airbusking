@@ -19,7 +19,7 @@ class EventsController < ApplicationController
         description: @event.description, 
         amount: @event.price,
         currency: 'aud', 
-        quantity: 1
+        quantity: 100
       }], 
       payment_intent_data: {
         metadata: {
