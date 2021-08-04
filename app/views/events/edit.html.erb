@@ -1,6 +1,12 @@
-<h1>Editing Event</h1>
-
-<%= render 'form', event: @event %>
-
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>
+<div class="d-flex justify-content-center bg-secondary">
+  <div class="card my-3" style="width: 60%;">
+    <div class="card-body">
+      <h1 class="text-center">Editing Event</h1>
+      <%= render 'form', event: @event %>
+      <div class="text-center">
+        <%= link_to 'Show', @event %> |
+        <%= link_to 'Back', events_path %>
+      </div>
+    </div>
+  </div>
+</div>

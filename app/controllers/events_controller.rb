@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :authorise_user, only: [:edit, :update, :destroy]
-  before_action :set_genres, only: [:new, :edit]
+  before_action :set_genres, only: [:new, :edit, :update]
 
   # GET /events or /events.json
   def index
@@ -18,7 +18,7 @@ class EventsController < ApplicationController
         name: @event.title, 
         description: @event.description, 
         amount: @event.price,
-        currency: 'aud', 
+        currency: 'aud' ,
         quantity: 100
       }], 
       payment_intent_data: {
@@ -99,11 +99,11 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:user_id, :genre_id, :title, :description, :date, :time, :price, :sold, :picture)
+      params.require(:event).permit(:user_id, :genre_id, :title, :description, :date, :time, :price, :picture)
     end
 
-def set_genres
-  @genres = Genre.all
-end
+    def set_genres
+      @genres = Genre.all
+    end
 
 end

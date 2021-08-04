@@ -17,10 +17,16 @@
     <%= form.text_field :title, class:"form-control" %>
   </div>
 
+ <div class="form-group mb-3">
+    <%= form.label :busker_name, class:"col form-label" %>
+    <%= form.text_field :busker_profile, class:"form-control" %>
+  </div>
+
   <div class="form-group mb-3">
     <%= form.label :genre_id, class:"col form-label" %>
     <%= form.select :genre_id, @genres.map {|g| [g.name, g.id]}, class: "form-select" %>
   </div>
+
 
   <div class="form-group mb-3">
     <%= form.label :description, class:"col form-label" %>
@@ -34,7 +40,7 @@
 
   <div class="form-group mb-3">
     <%= form.label :time, class:"col form-label" %>
-    <%= form.time_field :started_at %>
+    <%= form.time_zone_select :time_zone %>
   </div>
 
   <div class="form-group mb-3">
