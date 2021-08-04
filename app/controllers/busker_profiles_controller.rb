@@ -1,6 +1,7 @@
 class BuskerProfilesController < ApplicationController
   before_action :set_busker_profile, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :authorise_user, only: [:edit, :update, :destroy]
 
   # GET /busker_profiles or /busker_profiles.json
   def index
@@ -22,7 +23,7 @@ class BuskerProfilesController < ApplicationController
 
   # POST /busker_profiles or /busker_profiles.json
   def create
-    @busker_profile = current_user.busker_profiles.new(busker_profile_params)
+    @busker_profile = current_user.busker_profile.new(busker_profile_params)
 
     respond_to do |format|
       if @busker_profile.save

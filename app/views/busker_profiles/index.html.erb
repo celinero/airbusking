@@ -1,31 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="d-flex flex-column align-items-center">
+  <p id="notice"><%= notice %></p>
+  <h1>All the Busker Profiles:</h1>
+  <div class="d-flex flex-wrap justify-content-around">
+    <%@busker_profiles.each do |busker_profile| %>
+       <div class="col-md-4">
+        <div class="card mb-3" style="width: 18rem;">
+          <%# <%= image_tag image_select(busker_profile), class:"card-img-top img-size" %>
+          <div class="card-body">
+            <h5 class="card-title"><%= busker_profile.name%></h5>
+            <%# <p class="card-text"><%= busker_profile.bio%>
+            <%= link_to "Show", event_path(event.id), class:"btn btn-info btn-right" %>
+            <%# <%= link_to 'Edit', edit_event_path(event), class:"btn" %>
+            <%# <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn"%> 
+            </p>
+          </div>
+        </div>
+        
+      </div> 
+    <%end%>
+  </div>
+  <div class="text-center">                              
+    <%= link_to 'New Busker Profile', new_busker_profile_path %>
+  </div>
+</div>
 
-<h1>Busker Profiles</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Name</th>
-      <th>Bio</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @busker_profiles.each do |busker_profile| %>
-      <tr>
-        <td><%= busker_profile.user_id %></td>
-        <td><%= busker_profile.name %></td>
-        <td><%= busker_profile.bio %></td>
-        <td><%= link_to 'Show', busker_profile %></td>
-        <td><%= link_to 'Edit', edit_busker_profile_path(busker_profile) %></td>
-        <td><%= link_to 'Destroy', busker_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Busker Profile', new_busker_profile_path %>

@@ -6,9 +6,15 @@
     <li class="nav-item">
       <%= link_to "All events", events_path, class: "nav-link" %>
     </li>
+     <li class="nav-item">
+      <%= link_to "All buskers profile", busker_profiles_path, class: "nav-link" %>
+    </li>
   <% if user_signed_in? %>
       <li class="nav-item">
           <%=link_to "Create an event", new_event_path, class: "nav-link"%>
+      </li>
+      <li class="nav-item">
+          <%=link_to "Create a busker profile", new_busker_profile_path, class: "nav-link"%>
       </li>
 
       <li class="nav-item">
