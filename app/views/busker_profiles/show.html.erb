@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @busker_profile.user_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @busker_profile.name %>
+</p>
+
+<p>
+  <strong>Bio:</strong>
+  <%= @busker_profile.bio %>
+</p>
+
+<%= link_to 'Edit', edit_busker_profile_path(@busker_profile) %> |
+<%= link_to 'Back', busker_profiles_path %>

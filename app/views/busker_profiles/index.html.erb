@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Busker Profiles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Name</th>
+      <th>Bio</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @busker_profiles.each do |busker_profile| %>
+      <tr>
+        <td><%= busker_profile.user_id %></td>
+        <td><%= busker_profile.name %></td>
+        <td><%= busker_profile.bio %></td>
+        <td><%= link_to 'Show', busker_profile %></td>
+        <td><%= link_to 'Edit', edit_busker_profile_path(busker_profile) %></td>
+        <td><%= link_to 'Destroy', busker_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Busker Profile', new_busker_profile_path %>
