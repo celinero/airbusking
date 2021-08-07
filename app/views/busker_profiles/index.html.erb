@@ -1,6 +1,6 @@
 <div class="d-flex flex-column align-items-center">
   <p id="notice"><%= notice %></p>
-  <h1>All the Busker Profiles:</h1>
+  <h1 class="py-5">All the Busker Profiles</h1>
   <div class="d-flex flex-wrap justify-content-around">
     <%@busker_profiles.each do |busker_profile| %>
        <div class="col-md-4">
@@ -8,8 +8,8 @@
           <%# <%= image_tag image_select(busker_profile), class:"card-img-top img-size" %>
           <div class="card-body">
             <h5 class="card-title"><%= busker_profile.name%></h5>
-            <%# <p class="card-text"><%= busker_profile.bio%>
-            <%= link_to "Show", event_path(event.id), class:"btn btn-info btn-right" %>
+            <p class="card-text"><%= busker_profile.bio%>
+            <%= link_to "Show", busker_profile_path(busker_profile.id), class:"btn btn-info btn-right" %>
             <%# <%= link_to 'Edit', edit_event_path(event), class:"btn" %>
             <%# <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn"%> 
             </p>
