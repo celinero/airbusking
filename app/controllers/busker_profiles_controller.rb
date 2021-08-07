@@ -23,7 +23,7 @@ class BuskerProfilesController < ApplicationController
 
   # POST /busker_profiles or /busker_profiles.json
   def create
-    @busker_profile = current_user.busker_profile.new(busker_profile_params)
+    @busker_profile = current_user.build_busker_profile(busker_profile_params)
 
     respond_to do |format|
       if @busker_profile.save
