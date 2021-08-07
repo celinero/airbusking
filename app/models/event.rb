@@ -3,6 +3,15 @@ class Event < ApplicationRecord
   belongs_to :genre
   has_one_attached :picture
 
+  def self.search(query, option)
+    if query && option
+      self.where("LOWER(#{option}) LIKE ?","%#{query.downcase}%")
+    else
+      self.all
+    end
+  end
+
+
   #data_sanitization
   before_save :remove_whitespace
   before_validation :convert_price_to_cents, if: :price_changed?
