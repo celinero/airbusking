@@ -2,6 +2,7 @@ class BuskerProfilesController < ApplicationController
   before_action :set_busker_profile, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :authorise_user, only: [:edit, :update, :destroy]
+  before_action :already_exist, only: [:new]
 
   # GET /busker_profiles or /busker_profiles.json
   def index
@@ -62,6 +63,20 @@ class BuskerProfilesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_busker_profile
       @busker_profile = BuskerProfile.find(params[:id])
+    end
+
+    def authorise_user
+      if current_user.id != @busker_profile.user_id
+        flash[:error] = "you're not allowed to do that"
+        redirect_to busker_profiles_path
+      end
+    end
+
+    def already_exist
+      if BuskerProfile.find_by_user_id(current_user.id)
+        flash[:error] = "you're not allowed to do that, you've already created a profile"
+        redirect_to busker_profiles_path
+      end
     end
 
     # Only allow a list of trusted parameters through.
