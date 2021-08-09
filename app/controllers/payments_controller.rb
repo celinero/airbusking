@@ -1,15 +1,16 @@
 class PaymentsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:webhook]
-  
+
   def success
     @order = Order.find_by_event_id(params[:id])
+    @event = Event.find_by_id(@order.event_id)
   end
 
   def create_payment_intent
     event = Event.find(params[:id])
     session = Stripe::Checkout::Session.create(
         payment_method_types: ['card'], 
-        customer_email: current_user&.email, #current_user && current_user.email 
+        customer_email: current_user&.email,
         line_items: [{
           name: event.title, 
           description: event.description, 
@@ -20,7 +21,7 @@ class PaymentsController < ApplicationController
         payment_intent_data: {
           metadata: {
             user_id: current_user&.id,
-            listing_id: event.id
+            event_id: event.id
           }
         }, 
         success_url: "#{root_url}/success?id=#{event.id}", 
@@ -28,7 +29,6 @@ class PaymentsController < ApplicationController
       )
 
       @session_id = session.id 
-
   end 
 
   def webhook 

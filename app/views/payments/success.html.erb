@@ -1,1 +1,13 @@
-<p> Thanks for buying <a href=<%=@order.receipt_url%>>View Receipt</a> </p>
+<div class="container d-flex flex-column flex-md-row my-2 my-md-5 text-center">
+  <div class="content col-12 col-md-7 col-lg-8 p-0 pr-md-3">
+    <div class="p-3">
+      <h3 class="text-center pb-3"> Thank you for buying <%=@event.title%> !<h3> 
+      <p> Your order has been registered for an amount of $<%=@event.price / 100.00%></p>
+      
+      <p>You will receive by email the link to connect to the event a few days before with all the instructions to connect. </p>
+      <a class="btn btn-info mt-4" href=<%=@order.receipt_url%>>View Receipt</a>
+    </div>
+  </div> 
+</div>
+
+    
