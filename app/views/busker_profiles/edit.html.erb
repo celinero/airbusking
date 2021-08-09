@@ -1,6 +1,12 @@
-<h1>Editing Busker Profile</h1>
-
-<%= render 'form', busker_profile: @busker_profile %>
-
-<%= link_to 'Show', @busker_profile %> |
-<%= link_to 'Back', busker_profiles_path %>
+<div class="d-flex justify-content-center bg-secondary">
+  <div class="card my-3" style="width: 60%;">
+    <div class="card-body">
+      <h1 class="text-center py-3">Editing Busker Profile</h1>
+      <%= render 'form', busker_profile: @busker_profile %>
+      <div class="text-center">
+        <%= link_to 'Show', @busker_profile %> |
+        <%= link_to 'Back', busker_profiles_path %>
+      </div>
+    </div>
+  </div>
+</div>

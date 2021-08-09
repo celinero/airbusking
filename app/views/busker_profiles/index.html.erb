@@ -1,6 +1,9 @@
+<p id="notice"><%= notice %></p>
 <div class="d-flex flex-column align-items-center">
-  <p id="notice"><%= notice %></p>
-  <h1 class="py-5">All the Busker Profiles</h1>
+  <h1 class="py-5">Busker Profiles</h1>
+  <div class="text-center">                              
+    <%= link_to 'New Busker Profile', new_busker_profile_path, class:"btn pb-3 mb-3"%>
+  </div>
   <div class="d-flex flex-wrap justify-content-around">
     <%@busker_profiles.each do |busker_profile| %>
        <div class="col-md-4">
@@ -18,9 +21,6 @@
         
       </div> 
     <%end%>
-  </div>
-  <div class="text-center">                              
-    <%= link_to 'New Busker Profile', new_busker_profile_path %>
   </div>
 </div>
 

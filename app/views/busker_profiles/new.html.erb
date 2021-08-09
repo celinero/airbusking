@@ -1,12 +1,14 @@
 <div class="d-flex justify-content-center bg-secondary">
-  <div class="card my-3" style="width: 60%;">
-    <div class="card-body">
-      <h1 class="text-center">New Busker Profile</h1>
-      <%= render 'form', busker_profile: @busker_profile %>
-      <div class="text-center">
-        <%= link_to 'Back', busker_profiles_path %>
+  <p id="notice"><%= notice %></p>
+    <div class="card my-3" style="width: 60%;">
+      <div class="card-body">
+        <h1 class="text-center">New Busker Profile</h1>
+        <%= render 'form', busker_profile: @busker_profile %>
+        <div class="text-center">
+          <%= link_to 'Back', busker_profiles_path %>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
 
