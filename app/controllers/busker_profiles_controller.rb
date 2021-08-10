@@ -6,7 +6,7 @@ class BuskerProfilesController < ApplicationController
 
   # GET /busker_profiles or /busker_profiles.json
   def index
-    @busker_profiles = BuskerProfile.all
+    @busker_profiles = BuskerProfile.search(params[:query], params[:option]).all
   end
 
   # GET /busker_profiles/1 or /busker_profiles/1.json
@@ -81,6 +81,6 @@ class BuskerProfilesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def busker_profile_params
-      params.require(:busker_profile).permit(:user_id, :name, :bio)
+      params.require(:busker_profile).permit(:user_id, :name, :bio, :picture)
     end
 end
