@@ -20,14 +20,21 @@ genres = [
   {name: "Circus skills", description: "Fire manipulation, juggling, acrobatics etc..."}
 ]
 
-# if User.count == 0
-#   User.create(username: "Tester", email: "test@test.com", password: "password", password_confirmation: "password")
-# end
-
-
 if Genre.count == 0
   genres.each do |genre|
     Genre.create(name: genre[:name], description: genre[:description])
     puts "Created #{genre[:name]} genre"
   end
+end
+
+if User.count == 0
+  User.create(username: "Bob Marley", email: "bob@marley.com", password: "password", password_confirmation: "password")
+  User.create(username: "Jacky Chan", email: "jacky@chan.com", password: "password", password_confirmation: "password")
+  User.create(username: "Taylor Swift", email: "taylor@swift.com", password: "password", password_confirmation: "password")
+  User.create(username: "John Doe", email: "john@doe.com", password: "password", password_confirmation: "password")
+end
+
+if BuskerProfile.count == 0
+  BuskerProfile.create(user_id: 1, name: "Jamaica Love", bio: "lorem ipsum")
+  BuskerProfile.create(user_id: 3, name: "Country Girl", bio: "lorem ipsum")
 end
