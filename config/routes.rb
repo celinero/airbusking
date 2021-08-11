@@ -10,12 +10,11 @@ Rails.application.routes.draw do
   post '/payments', to: "payments#create_payment_intent", as: "create_payment_intent"
 
   get '/reviews/new/:busker_profile_id', to: 'reviews#new', as: "create_new_review"   
+  post '/reviews', to: 'reviews#create'
   
   
 #   Prefix Verb   URI Pattern                                  Controller#Action
 
-#           POST   /reviews(.:format)                           reviews#create
-# new_review GET    /reviews/new(.:format)                      reviews#new
 # edit_review GET    /reviews/:id/edit(.:format)                reviews#edit
 #    review GET    /reviews/:id(.:format)                       reviews#show
 #           PATCH  /reviews/:id(.:format)                       reviews#update
