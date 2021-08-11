@@ -7,6 +7,7 @@ class EventsController < ApplicationController
   # GET /events or /events.json
   def index
     @events = Event.search(params[:query], params[:option]).all.includes(:genre)
+    @busker_profile = current_user&.busker_profile
   end
 
   # GET /events/1 or /events/1.json
@@ -32,7 +33,7 @@ class EventsController < ApplicationController
     )
 
     @session_id = session.id 
-  
+    @busker_profile = BuskerProfile.all.find_by_user_id(@event.user_id)
   end
   
 
@@ -97,7 +98,7 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:user_id, :genre_id, :title, :description, :date, :time, :price, :picture)
+      params.require(:event).permit(:user_id, :genre_id, :title, :description, :date, :time, :price, :quantity, :picture)
     end
 
     def set_genres
