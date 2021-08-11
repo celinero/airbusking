@@ -7,6 +7,7 @@ class BuskerProfilesController < ApplicationController
   # GET /busker_profiles or /busker_profiles.json
   def index
     @busker_profiles = BuskerProfile.search(params[:query], params[:option]).all
+    @busker_profile = current_user&.busker_profile
   end
 
   # GET /busker_profiles/1 or /busker_profiles/1.json
