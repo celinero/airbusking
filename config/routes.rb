@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   get '/success', to: "payments#success", as: "payment_success"
   post '/payments/webhook', to: "payments#webhook", as: "webhook"
   post '/payments', to: "payments#create_payment_intent", as: "create_payment_intent"
+
+  get '/reviews/new/:busker_profile_id', to: 'reviews#new', as: "create_new_review"                                        
 end

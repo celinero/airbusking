@@ -14,6 +14,8 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/new
   def new
+    @busker_profile_id = request.path_parameters[:busker_profile_id]
+    @busker_profile = BuskerProfile.find_by_id(@busker_profile_id)
     @review = Review.new
   end
 
