@@ -20,9 +20,9 @@ genres = [
   {name: "Circus skills", description: "Fire manipulation, juggling, acrobatics etc..."}
 ]
 
-if User.count == 0
-  User.create(username: "Tester", email: "test@test.com", password: "password", password_confirmation: "password")
-end
+# if User.count == 0
+#   User.create(username: "Tester", email: "test@test.com", password: "password", password_confirmation: "password")
+# end
 
 
 if Genre.count == 0

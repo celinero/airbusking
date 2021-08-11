@@ -8,7 +8,7 @@
 
     <div class="sidebar col-lg-4 p-0 mx-2 d-md-block">
       <h1 class="mb-sm-2 mb-md-5"><%=@event.title%></h1>
-      <%# <h2 class="mb-sm-2 mb-md-5"><%=@event.user.busker_profile.name %>
+      <h2 class="mb-sm-2 mb-md-5"><%= link_to @busker_profile.name, busker_profile_path(@busker_profile.id)%> </h2>
       <h4 class="text-muted pb-sm-2 pb-md-3">Date: <%=@event.date%></h4>
       <h4 class="text-muted pb-sm-2 pb-md-3">Time: <%=@event.time%></h4>
       <h4 class="text-muted pb-sm-2 pb-md-3">Tickets left: <%= @event.quantity %> </h4>
@@ -18,7 +18,7 @@
       <% if current_user && @event.sold == false %>
         <%= button_to "Buy: $#{@event.price / 100.00}", create_payment_intent_path, method: :post, remote: true, params:{id: @event.id}, class: "btn btn-primary p-3 text-center"%>
       <% elsif @event.sold == true %>
-        <button class='btn btn-secondary' disabled>SOLD</button>
+        <button class='btn btn-secondary' disabled>SOLD OUT</button>
       <%else%>
         <%=button_to "Login to buy", new_user_session_path, class: "btn btn-info"%>
       <%end%>
