@@ -1,9 +1,11 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authorise_user, only: [:edit, :update, :destroy]
 
   # GET /reviews or /reviews.json
   def index
-    @reviews = Review.all
+    @reviews = Review.search(params[:query]).all
   end
 
   # GET /reviews/1 or /reviews/1.json
@@ -60,6 +62,13 @@ class ReviewsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_review
       @review = Review.find(params[:id])
+    end
+
+    def authorise_user
+      if current_user.id != @review.user_id
+        flash[:error] = "You're not allowed to do that"
+        redirect_to reviews_path
+      end
     end
 
     # Only allow a list of trusted parameters through.

@@ -1,33 +1,37 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<h1>Reviews</h1>
+  <div class="d-flex flex-column align-items-center">
+    <h1 class="py-5">Reviews</h1>
+    <div class="text-center">                              
+      <%= link_to 'Create a new review', new_review_path, class:"btn btn-info mb-3"%>
+    </div>
+    <div class="mb-3">
+      <h4>Search</h4>
+      <%=form_with url: reviews_path, method: :get, local: true do |form|%>
+      <%= form.label :query, "Search by name" %>
+      <%= form.text_field :query %>
+      <%= form.submit "Search" %>
+      <% end %>
+    </div>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Busker profile</th>
-      <th>Comment</th>
-      <th>Rating</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div class="row justify-content-center">
+      <%@reviews.each do |review| %>
+        <div class="col col-md-4">
+           <div class="card mb-3">
+              <h5 class="card-title"><%= review.name%></h5>
+              <p class="card-text">By <%= review.user%></p>
+              <p class="card-text"><%= review.rating%></p>
+              <%= link_to "Show", review_path(review.id), class:"btn btn-info btn-right" %>
+            </div>
+          </div>
+          
+        </div> 
+      <%end%>
+    </div>
 
-  <tbody>
-    <% @reviews.each do |review| %>
-      <tr>
-        <td><%= review.user_id %></td>
-        <td><%= review.busker_profile_id %></td>
-        <td><%= review.comment %></td>
-        <td><%= review.rating %></td>
-        <td><%= link_to 'Show', review %></td>
-        <td><%= link_to 'Edit', edit_review_path(review) %></td>
-        <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+</div>
 
-<br>
 
-<%= link_to 'New Review', new_review_path %>
+

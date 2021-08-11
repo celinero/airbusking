@@ -1,6 +1,15 @@
-<h1>Editing Review</h1>
+<div class="d-flex justify-content-center bg-secondary">
+  <p id="notice"><%= notice %></p>
+  <div class="card my-3" style="width: 60%;">
+    <div class="card-body">
+      <h1 class="text-center">Editing Review</h1>
+      <%= render 'form', review: @review %>
+      <div class="text-center">
+        <%= link_to 'Show', @review %> |
+        <%= link_to 'Back', reviews_path %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= render 'form', review: @review %>
 
-<%= link_to 'Show', @review %> |
-<%= link_to 'Back', reviews_path %>

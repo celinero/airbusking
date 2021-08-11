@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :events
+  has_many :reviews
   has_one :busker_profile
 
   has_many :sold_orders, class_name: "Order", foreign_key: "seller_id"
