@@ -13,7 +13,7 @@ class BuskerProfilesController < ApplicationController
   # GET /busker_profiles/1 or /busker_profiles/1.json
   def show
     @busker_profile_id = request.path_parameters[:id]
-    @reviews = Review.where(busker_profile_id: 2)
+    @reviews = Review.where(busker_profile_id: @busker_profile_id)
   end
 
   # GET /busker_profiles/new
