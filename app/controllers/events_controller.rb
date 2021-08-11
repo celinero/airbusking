@@ -32,9 +32,7 @@ class EventsController < ApplicationController
     )
 
     @session_id = session.id 
-    puts "*********"
-    pp @session_id
-    puts "*********"
+  
   end
   
 

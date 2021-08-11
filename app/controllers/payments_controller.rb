@@ -38,7 +38,11 @@ class PaymentsController < ApplicationController
     event_id = payment.metadata.event_id
     buyer_id = payment.metadata.user_id
     event = Event.find(event_id)
-    event.update(sold: true)
+
+    newQuantity = event.quantity - 1
+    event.update(quantity: newQuantity)
+    event.update(sold: newQuantity == 0)
+
     Order.create(event_id: event_id, buyer_id: buyer_id, seller_id: event.user_id, payment_id: payment_id, receipt_url: payment.charges.data[0].receipt_url)
   end 
 

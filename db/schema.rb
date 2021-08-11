@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2021_08_04_044430) do
     t.boolean "sold", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "quantity"
     t.index ["genre_id"], name: "index_events_on_genre_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
