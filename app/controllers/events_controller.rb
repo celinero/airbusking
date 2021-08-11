@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :authorise_user, only: [:edit, :update, :destroy]
+  before_action :busker_only, only: [:new]
   before_action :set_genres, only: [:new, :edit, :update]
 
   # GET /events or /events.json
@@ -92,6 +93,13 @@ class EventsController < ApplicationController
     def authorise_user
       if current_user.id != @event.user_id
         flash[:error] = "you're not allowed to do that"
+        redirect_to events_path
+      end
+    end
+
+    def busker_only
+      if !current_user.busker_profile
+        flash[:error] = "You're not allowed to do that, first create a busker profile"
         redirect_to events_path
       end
     end
