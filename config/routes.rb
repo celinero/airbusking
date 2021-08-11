@@ -16,7 +16,6 @@ Rails.application.routes.draw do
 #   Prefix Verb   URI Pattern                                  Controller#Action
 
 # edit_review GET    /reviews/:id/edit(.:format)                reviews#edit
-#    review GET    /reviews/:id(.:format)                       reviews#show
 #           PATCH  /reviews/:id(.:format)                       reviews#update
 #           PUT    /reviews/:id(.:format)                       reviews#update
 #           DELETE /reviews/:id(.:format)                       reviews#destroy
