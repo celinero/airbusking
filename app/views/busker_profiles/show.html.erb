@@ -1,18 +1,20 @@
-<div class="my-5 mx-5 text-center">
+<div class="container">
   <p id="notice"><%= notice %></p>
-  <div class="container d-flex flex-column flex-md-row my-2 my-md-5">
+  <div class="d-flex flex-column align-items-center">
     <div class="content col-12 col-md-7 col-lg-8 p-0 pr-md-3">
-      <div class="card p-3">
-        <h2 class="text-center pb-3">
-          <%= @busker_profile.name %>
-        </h2>
-
-        <p>
-          <strong>Bio:</strong>
-          <%= @busker_profile.bio %>
-        </p>
-
-        <div class ='d-flex justify-content-around'>   
+      <div class="col col-md-4">
+        <div class="card mb-3">
+          <%=image_tag image_select(@busker_profile), class:"thumbnail card-img top"%>
+        </div>
+        <div class="card-body">
+          <h2 class="text-center pb-3">
+            <%= @busker_profile.name %>
+          </h2>
+          <p>
+            <strong>Bio:</strong>
+            <%= @busker_profile.bio %>
+          </p>
+          <div class ='d-flex justify-content-around'>   
           <% if current_user&.id == @busker_profile.user_id %>
             <%= link_to 'Edit', edit_busker_profile_path(@busker_profile), class: "pt-4 mr-3" %> 
             <span class="pt-4"> | </span>
@@ -21,6 +23,7 @@
           <% end %>
           <%= link_to 'Back', busker_profiles_path, class: "btn pt-4" %>
         </div>
+       </div> 
       </div>
     </div>
   </div>
