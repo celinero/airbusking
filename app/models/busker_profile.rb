@@ -11,4 +11,15 @@ class BuskerProfile < ApplicationRecord
     end
 
   end
+
+
+  #data_sanitization
+  before_save :remove_whitespace
+
+  private
+  def remove_whitespace
+    self.title = self.title.strip 
+    self.description = self.description.strip
+  end
+  
 end
