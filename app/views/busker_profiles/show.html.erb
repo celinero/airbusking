@@ -43,8 +43,17 @@
                   <figcaption class="blockquote-footer"><%= review.user.username%></figcaption>
               </figure>
             </div>
-          </div>
-        <% end %>
+              
+            <% if current_user&.id == review.user_id %>
+              <div class ='d-flex justify-content-around'> 
+                <%# <%= link_to 'Edit', edit_event_path(@event.id), class: "btn pt-4 mr-3" %> 
+                <%# <span class="pt-4"> | </span> %>
+                <%= link_to 'Delete', delete_reviews_path(review.id, @busker_profile.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn pt-4 mr-3" %>
+                <span class="pt-4"> | </span>
+              </div>
+            <% end %>
+          </div> 
+        <% end %>      
       </div>
   </div>
  
