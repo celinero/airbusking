@@ -13,7 +13,6 @@
       <h4 class="text-muted pb-sm-2 pb-md-3">Time: <%=@event.time%></h4>
       <h4 class="text-muted pb-sm-2 pb-md-3">Tickets left: <%= @event.quantity %> </h4>
       <p class="blockquote mt-2"><%=@event.description%></p>
-      
 
       <% if current_user && @event.sold == false %>
         <%= button_to "Buy: $#{@event.price / 100.00}", create_payment_intent_path, method: :post, remote: true, params:{id: @event.id}, class: "btn btn-primary p-3 text-center"%>
@@ -22,10 +21,7 @@
       <%else%>
         <%=button_to "Login to buy", new_user_session_path, class: "btn btn-info"%>
       <%end%>
-
-      
-
-
+  
       <div class ='d-flex justify-content-around'>   
         <% if current_user&.id == @event.user_id %>
           <%= link_to 'Edit', edit_event_path(@event.id), class: "btn pt-4 mr-3" %> 
