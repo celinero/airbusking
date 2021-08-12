@@ -18,8 +18,8 @@ class BuskerProfile < ApplicationRecord
 
   private
   def remove_whitespace
-    self.title = self.title.strip 
-    self.description = self.description.strip
+    self.name = self.name.strip 
+    self.bio = self.bio.strip
   end
   
 end
