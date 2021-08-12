@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  # resources :reviews
   resources :busker_profiles
   resources :events
   devise_for :users
@@ -11,20 +10,9 @@ Rails.application.routes.draw do
 
   get '/reviews/new/:busker_profile_id', to: 'reviews#new', as: "create_new_review"   
   post '/reviews', to: 'reviews#create'
-  delete '/reviews/:id/:busker_profile_id', to: 'reviews#destroy', as: "delete_reviews"
-  
-  
-#   Prefix Verb   URI Pattern                                  Controller#Action
-
-# edit_review GET    /reviews/:id/edit(.:format)                reviews#edit
-#           PATCH  /reviews/:id(.:format)                       reviews#update
-#           PUT    /reviews/:id(.:format)                       reviews#update
-#           DELETE /reviews/:id(.:format)                       reviews#destroy
-
-
-
-
-
-
-
+  delete '/reviews/:id/:busker_profile_id', to: 'reviews#destroy', as: "delete_review"
+  get '/reviews/:id/:busker_profile_id/edit', to: 'reviews#edit', as: "edit_review"
+  patch '/reviews/:id', to: 'reviews#update'
+  put '/reviews/:id', to: 'reviews#update'
+  get '/reviews/:id', to: 'reviews#show', as: 'review'
 end

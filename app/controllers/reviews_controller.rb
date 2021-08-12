@@ -14,6 +14,8 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1/edit
   def edit
+    @busker_profile_id = request.path_parameters[:busker_profile_id]
+    @busker_profile = BuskerProfile.find_by_id(@busker_profile_id)
   end
 
   # POST /reviews or /reviews.json
@@ -34,9 +36,11 @@ class ReviewsController < ApplicationController
 
   # PATCH/PUT /reviews/1 or /reviews/1.json
   def update
+    @busker_profile = BuskerProfile.find_by_id(review_params[:busker_profile_id])
+
     respond_to do |format|
       if @review.update(review_params)
-        format.html { redirect_to @review, notice: "Review was successfully updated." }
+        format.html { redirect_to @busker_profile, notice: "Review was successfully updated." }
         format.json { render :show, status: :ok, location: @review }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -63,7 +67,7 @@ class ReviewsController < ApplicationController
     def authorise_user
       if current_user.id != @review.user_id
         flash[:error] = "You're not allowed to do that"
-        redirect_to reviews_path
+        redirect_to '/'
       end
     end
 
